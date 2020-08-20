@@ -37,8 +37,8 @@ CREATE TABLE cr_person (
     passport_series VARCHAR(10),
     passport_number VARCHAR(10),
     passport_date DATE,
-    certificate_number VARCHAR(10),
-    certificate_date DATE,
+    certificate_number VARCHAR(10) null,
+    certificate_date DATE null,
     PRIMARY KEY (person_id)
 );
 
@@ -48,6 +48,7 @@ CREATE TABLE cr_address_person (
     person_id INTEGER NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE,
+    temporal BOOLEAN DEFAULT false,
     PRIMARY KEY (person_address_id),
     FOREIGN KEY (address_id) REFERENCES cr_address(address_id) ON DELETE RESTRICT,
     FOREIGN KEY (person_id) REFERENCES cr_person(person_id) ON DELETE RESTRICT
