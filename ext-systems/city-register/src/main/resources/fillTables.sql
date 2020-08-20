@@ -6,16 +6,27 @@ VALUES (1, 'Sampsonevskiy prospekt');
 
 INSERT INTO cr_address (district_code, street_code, building, extension, apartment)
 VALUES (1, 1, '10', '2', '121');
+INSERT INTO cr_address (district_code, street_code, building, extension, apartment)
+VALUES (1, 1, '271', null, '4');
 
 INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
                        passport_series, passport_number, passport_date, certificate_number, certificate_date)
-VALUES ('Vasilev', 'Pavel', 'Nikolaevich', '1995-03-18', '1234', '123456', '2015-04-11', null, null),
-       ('Vasileva', 'Irina', 'Petrovna', '1997-08-21', '4321', '654321', '2017-09-19', null, null),
-       ('Vasileva', 'Evgenia', 'Pavlovna', '2016-01-11', null, null, null, '456123', '2016-01-21'),
-       ('Vasilev', 'Alexander', 'Pavlovich', '2018-10-24', null, null, null, '321654', '2018-11-09');
+VALUES ('Vasilev', 'Pavel', 'Nikolaevich', '1995-03-18', '1234', '123456', '2015-04-11', null, null)
+
+INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
+                       passport_series, passport_number, passport_date, certificate_number, certificate_date)
+VALUES ('Vasileva', 'Irina', 'Petrovna', '1997-08-21', '4321', '654321', '2017-09-19', null, null);
+
+INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
+                       passport_series, passport_number, passport_date, certificate_number, certificate_date)
+VALUES ('Vasileva', 'Evgenia', 'Pavlovna', '2016-01-11', null, null, null, '456123', '2016-01-21');
+
+INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
+                       passport_series, passport_number, passport_date, certificate_number, certificate_date)
+VALUES ('Vasilev', 'Alexander', 'Pavlovich', '2018-10-24', null, null, null, '321654', '2018-11-09');
 
 INSERT INTO cr_address_person (address_id, person_id, start_date, end_date)
 VALUES (1, 1, '2014-10-12', null),
-       (1, 1, '2014-10-12', null),
-       (1, 1, '2016-02-05', null),
-       (1, 1, '2018-12-11', null);
+       (2, 2, '2014-10-12', null),
+       (1, 3, '2016-02-05', null),
+       (1, 4, '2018-12-11', null);
