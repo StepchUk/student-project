@@ -1,6 +1,7 @@
 package loc.stalex.city.web;
 
 import loc.stalex.city.dao.PersonCheckDao;
+import loc.stalex.city.dao.PoolConnectionBuilder;
 import loc.stalex.city.domain.PersonRequest;
 import loc.stalex.city.domain.PersonResponse;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class CheckPersonServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         LOGGER.info("SERVLET is created");
-        dao = new PersonCheckDao();
+        dao = new PersonCheckDao(new PoolConnectionBuilder());
     }
 
     @Override
