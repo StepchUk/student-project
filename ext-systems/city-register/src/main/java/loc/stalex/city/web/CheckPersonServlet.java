@@ -15,6 +15,13 @@ import java.time.LocalDate;
 @WebServlet(name = "CheckPersonServlet", urlPatterns = {"/checkPerson"})
 public class CheckPersonServlet extends HttpServlet {
 
+    PersonCheckDao dao;
+
+    @Override
+    public void init() throws ServletException {
+         dao = new PersonCheckDao();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -32,7 +39,6 @@ public class CheckPersonServlet extends HttpServlet {
         pr.setApartment("121");
 
         try {
-            PersonCheckDao dao = new PersonCheckDao();
             PersonResponse ps = dao.checkPerson(pr);
 
             if (ps.isRegistered()) {
