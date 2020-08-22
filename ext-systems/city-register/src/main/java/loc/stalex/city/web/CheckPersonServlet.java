@@ -3,6 +3,8 @@ package loc.stalex.city.web;
 import loc.stalex.city.dao.PersonCheckDao;
 import loc.stalex.city.domain.PersonRequest;
 import loc.stalex.city.domain.PersonResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,11 +17,14 @@ import java.time.LocalDate;
 @WebServlet(name = "CheckPersonServlet", urlPatterns = {"/checkPerson"})
 public class CheckPersonServlet extends HttpServlet {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CheckPersonServlet.class);
+
     PersonCheckDao dao;
 
     @Override
     public void init() throws ServletException {
-         dao = new PersonCheckDao();
+        LOGGER.info("SERVLET is created");
+        dao = new PersonCheckDao();
     }
 
     @Override
