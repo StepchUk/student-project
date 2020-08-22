@@ -4,7 +4,10 @@ import loc.stalex.city.domain.PersonRequest;
 import loc.stalex.city.domain.PersonResponse;
 import loc.stalex.city.exception.PersonCheckException;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PersonCheckDao {
 
@@ -19,6 +22,12 @@ public class PersonCheckDao {
             "  AND p.date_of_birth = ? " +
             "  AND a.street_code = ? " +
             "  AND upper(a.building) = upper(?) ";
+
+    private final ConnectionBuilder connectionBuilder;
+
+    public PersonCheckDao(ConnectionBuilder connectionBuilder) {
+        this.connectionBuilder = connectionBuilder;
+    }
 
     public PersonResponse checkPerson(PersonRequest request) throws PersonCheckException {
         PersonResponse response = new PersonResponse();
@@ -69,7 +78,6 @@ public class PersonCheckDao {
     }
 
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost/city_register",
-                "postgres", "postgres");
+        return connectionBuilder.getConnection();
     }
 }
