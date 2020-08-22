@@ -9,7 +9,7 @@
             username="postgres"
             password="postgres"
             type="javax.sql.DataSource"
-            url="jdbc:postgres://localhost/city_register"
+            url="jdbc:postgresql://localhost/city_register"
             validatingQuery="SELECT 1">
     </Resource>
 </Context>
