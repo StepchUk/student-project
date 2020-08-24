@@ -11,7 +11,7 @@ VALUES (1, 1, '271', null, '4');
 
 INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
                        passport_series, passport_number, passport_date, certificate_number, certificate_date)
-VALUES ('Vasilev', 'Pavel', 'Nikolaevich', '1995-03-18', '1234', '123456', '2015-04-11', null, null)
+VALUES ('Vasilev', 'Pavel', 'Nikolaevich', '1995-03-18', '1234', '123456', '2015-04-11', null, null);
 
 INSERT INTO cr_person (sur_name, given_name, patronymic, date_of_birth,
                        passport_series, passport_number, passport_date, certificate_number, certificate_date)
@@ -27,6 +27,6 @@ VALUES ('Vasilev', 'Alexander', 'Pavlovich', '2018-10-24', null, null, null, '32
 
 INSERT INTO cr_address_person (address_id, person_id, start_date, end_date)
 VALUES (1, 1, '2014-10-12', null),
-       (2, 2, '2014-10-12', null),
+       (1, 2, '2014-10-12', null),
        (1, 3, '2016-02-05', null),
        (1, 4, '2018-12-11', null);
