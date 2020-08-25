@@ -21,7 +21,7 @@ public class CheckPersonServlet extends HttpServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CheckPersonServlet.class);
 
-    PersonCheckDao dao;
+    private PersonCheckDao dao;
 
     @Override
     public void init() throws ServletException {
