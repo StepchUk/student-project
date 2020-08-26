@@ -1,15 +1,15 @@
 package loc.stalex.studentorder.validator;
 
-import loc.stalex.studentorder.domain.Person;
-import loc.stalex.studentorder.domain.register.AnswerCityRegister;
 import loc.stalex.studentorder.domain.Child;
+import loc.stalex.studentorder.domain.Person;
+import loc.stalex.studentorder.domain.StudentOrder;
+import loc.stalex.studentorder.domain.register.AnswerCityRegister;
 import loc.stalex.studentorder.domain.register.AnswerCityRegisterItem;
 import loc.stalex.studentorder.domain.register.CityRegisterResponse;
-import loc.stalex.studentorder.domain.StudentOrder;
 import loc.stalex.studentorder.exception.CityRegisterException;
 import loc.stalex.studentorder.exception.TransportException;
 import loc.stalex.studentorder.validator.register.CityRegisterChecker;
-import loc.stalex.studentorder.validator.register.FakeCityRegisterChecker;
+import loc.stalex.studentorder.validator.register.RealCityRegisterChecker;
 
 public class CityRegisterValidator {
 
@@ -18,7 +18,7 @@ public class CityRegisterValidator {
     private final CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
-        personChecker = new FakeCityRegisterChecker();
+        personChecker = new RealCityRegisterChecker();
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
@@ -40,7 +40,7 @@ public class CityRegisterValidator {
 
         try {
             CityRegisterResponse tmp = personChecker.checkerPerson(person);
-            status = tmp.isExisting() ?
+            status = tmp.isRegistered() ?
                     AnswerCityRegisterItem.CityStatus.YES :
                     AnswerCityRegisterItem.CityStatus.NO;
         } catch (CityRegisterException e) {
