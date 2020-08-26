@@ -9,12 +9,14 @@ public class Config {
     public static final String DB_LOGIN = "db.login";
     public static final String DB_PASSWORD = "db.password";
     public static final String DB_LIMIT = "db.limit";
+    public static final String CR_URL = "cr.url";
 
     private static final Properties PROPERTIES = new Properties();
 
     public static String getProperty(String name) {
         if (PROPERTIES.isEmpty()) {
-            try (InputStream is = Config.class.getClassLoader().getResourceAsStream("dao.properties")) {
+            try (InputStream is = Config.class.getClassLoader()
+                    .getResourceAsStream("config.properties")) {
                 PROPERTIES.load(is);
             } catch (IOException e) {
                 throw new RuntimeException(e);
