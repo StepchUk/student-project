@@ -2,10 +2,9 @@ package loc.stalex.studentorder.validator.register;
 
 import loc.stalex.studentorder.domain.Adult;
 import loc.stalex.studentorder.domain.Child;
-import loc.stalex.studentorder.domain.register.CityRegisterResponse;
 import loc.stalex.studentorder.domain.Person;
+import loc.stalex.studentorder.domain.register.CityRegisterResponse;
 import loc.stalex.studentorder.exception.CityRegisterException;
-import loc.stalex.studentorder.exception.TransportException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
 
@@ -15,11 +14,8 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     private static final String BAD_WIFE_ID = "2001";
     private static final String ERROR_1 = "1002";
     private static final String ERROR_2 = "2002";
-    private static final String ERROR_TRANSPORT_1 = "1003";
-    private static final String ERROR_TRANSPORT_2 = "2003";
 
-    public CityRegisterResponse checkerPerson(Person person)
-            throws CityRegisterException, TransportException {
+    public CityRegisterResponse checkerPerson(Person person) throws CityRegisterException {
         CityRegisterResponse res = new CityRegisterResponse();
 
         if (person instanceof Adult) {
@@ -36,10 +32,6 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
 
             if (ERROR_1.equals(passportSeries) || ERROR_2.equals(passportSeries)) {
                 throw new CityRegisterException("1", "GRN Error " + passportSeries);
-            }
-
-            if (ERROR_TRANSPORT_1.equals(passportSeries) || ERROR_TRANSPORT_2.equals(passportSeries)) {
-                throw new TransportException("Transport Error " + passportSeries);
             }
         }
 

@@ -7,7 +7,6 @@ import loc.stalex.studentorder.domain.register.AnswerCityRegister;
 import loc.stalex.studentorder.domain.register.AnswerCityRegisterItem;
 import loc.stalex.studentorder.domain.register.CityRegisterResponse;
 import loc.stalex.studentorder.exception.CityRegisterException;
-import loc.stalex.studentorder.exception.TransportException;
 import loc.stalex.studentorder.validator.register.CityRegisterChecker;
 import loc.stalex.studentorder.validator.register.RealCityRegisterChecker;
 
@@ -47,10 +46,6 @@ public class CityRegisterValidator {
             e.printStackTrace();
             status = AnswerCityRegisterItem.CityStatus.ERROR;
             error = new AnswerCityRegisterItem.CityError(e.getCode(), e.getMessage());
-        } catch (TransportException e) {
-            e.printStackTrace();
-            status = AnswerCityRegisterItem.CityStatus.ERROR;
-            error = new AnswerCityRegisterItem.CityError(IN_CODE, e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             status = AnswerCityRegisterItem.CityStatus.ERROR;
