@@ -15,15 +15,19 @@ public class RealCityRegisterChecker implements CityRegisterChecker {
 
     public CityRegisterResponse checkerPerson(Person person) throws CityRegisterException {
 
-        CityRegisterRequest request = new CityRegisterRequest(person);
+        try {
+            CityRegisterRequest request = new CityRegisterRequest(person);
 
-        Client client = ClientBuilder.newClient();
-        CityRegisterResponse response = client
-                .target(Config.getProperty(Config.CR_URL))
-                .request(MediaType.APPLICATION_JSON)
-                .post(Entity.entity(request, MediaType.APPLICATION_JSON))
-                .readEntity(CityRegisterResponse.class);
+            Client client = ClientBuilder.newClient();
+            CityRegisterResponse response = client
+                    .target(Config.getProperty(Config.CR_URL))
+                    .request(MediaType.APPLICATION_JSON)
+                    .post(Entity.entity(request, MediaType.APPLICATION_JSON))
+                    .readEntity(CityRegisterResponse.class);
 
-        return response;
+            return response;
+        } catch (Exception e) {
+            throw new CityRegisterException("1", e.getMessage(), e);
+        }
     }
 }
