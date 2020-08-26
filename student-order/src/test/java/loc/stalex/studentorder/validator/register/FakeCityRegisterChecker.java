@@ -26,12 +26,12 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
             Adult t = (Adult) person;
             String passportSeries = t.getPassportSeries();
             if (HUSBAND_ID.equals(passportSeries) || WIFE_ID.equals(passportSeries)) {
-                res.setExisting(true);
+                res.setRegistered(true);
                 res.setTemporal(false);
             }
 
             if (BAD_HUSBAND_ID.equals(passportSeries) || BAD_WIFE_ID.equals(passportSeries)) {
-                res.setExisting(false);
+                res.setRegistered(false);
             }
 
             if (ERROR_1.equals(passportSeries) || ERROR_2.equals(passportSeries)) {
@@ -44,7 +44,7 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
         }
 
         if (person instanceof Child) {
-            res.setExisting(true);
+            res.setRegistered(true);
             res.setTemporal(true);
         }
 
